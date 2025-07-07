@@ -5,17 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ObraSegura - Equipando com responsabilidade</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: #f5f7fa;
       color: #333;
-      line-height: 1.6;
     }
 
     header {
@@ -23,19 +18,15 @@
       color: white;
       padding: 20px 0;
       text-align: center;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
 
     header h1 {
       font-size: 2.5rem;
-      letter-spacing: 2px;
       margin-bottom: 5px;
     }
 
     header p {
-      font-size: 1.1rem;
       font-style: italic;
-      opacity: 0.85;
     }
 
     main {
@@ -62,9 +53,8 @@
       padding: 15px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       text-align: center;
+      cursor: pointer;
       transition: transform 0.3s ease;
-      text-decoration: none;
-      color: inherit;
     }
 
     .produto:hover {
@@ -76,34 +66,14 @@
       max-width: 100%;
       height: 160px;
       object-fit: cover;
-      margin-bottom: 12px;
       border-radius: 6px;
+      margin-bottom: 10px;
     }
 
     .produto-nome {
-      font-weight: 600;
+      font-weight: bold;
       font-size: 1.1rem;
       color: #222;
-    }
-
-    .whatsapp-section {
-      text-align: center;
-      margin: 60px 0 30px;
-    }
-
-    .whatsapp-section a {
-      background: #25d366;
-      color: white;
-      padding: 14px 28px;
-      border-radius: 6px;
-      font-size: 1.1rem;
-      text-decoration: none;
-      font-weight: bold;
-      transition: background 0.3s ease;
-    }
-
-    .whatsapp-section a:hover {
-      background: #1eb75c;
     }
 
     footer {
@@ -111,17 +81,60 @@
       color: white;
       text-align: center;
       padding: 15px 0;
-      font-size: 0.9rem;
-      letter-spacing: 1px;
+      margin-top: 60px;
     }
 
-    @media(max-width: 480px) {
-      header h1 {
-        font-size: 1.8rem;
-      }
-      .produto img {
-        height: 130px;
-      }
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0,0,0,0.7);
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .modal-content {
+      background: white;
+      max-width: 500px;
+      width: 100%;
+      padding: 30px;
+      border-radius: 10px;
+      position: relative;
+    }
+
+    .modal h3 {
+      color: #004aad;
+      margin-bottom: 10px;
+    }
+
+    .modal p {
+      margin-bottom: 12px;
+    }
+
+    .close {
+      position: absolute;
+      top: 12px;
+      right: 20px;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .whatsapp-btn {
+      background: #25d366;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 10px;
     }
   </style>
 </head>
@@ -133,53 +146,74 @@
 
   <main>
     <h2>Nossos Produtos</h2>
-    <section class="produtos-grid">
+    <div class="produtos-grid">
 
-      <a href="https://wa.me/5511942593255?text=Olá! Tenho interesse no capacete de segurança." target="_blank" class="produto">
-        <img src="https://images.unsplash.com/photo-1581090700227-1c11d4d7f3a1?auto=format&fit=crop&w=500&q=60" alt="Capacete de segurança" />
+      <!-- Produto: Capacete -->
+      <div class="produto" onclick="abrirModal('Capacete de Segurança', 'Utilizado para proteger a cabeça contra impactos e quedas de objetos. Essencial em qualquer obra para garantir a integridade física do trabalhador.', 'CA: 12345 | Material: Polietileno | Tamanho: Único ajustável')">
+        <img src="https://images.unsplash.com/photo-1581090700227-1c11d4d7f3a1?auto=format&fit=crop&w=500&q=60" alt="Capacete de Segurança">
         <div class="produto-nome">Capacete de Segurança</div>
-      </a>
+      </div>
 
-      <a href="https://wa.me/5511942593255?text=Olá! Tenho interesse na botina de segurança." target="_blank" class="produto">
-        <img src="https://images.unsplash.com/photo-1600180758890-1c196054b2e2?auto=format&fit=crop&w=500&q=60" alt="Botina de segurança" />
+      <!-- Produto: Botina -->
+      <div class="produto" onclick="abrirModal('Botina de Segurança', 'Protege os pés contra perfurações, impactos e materiais pesados. Ideal para áreas com risco de queda de objetos ou pisos escorregadios.', 'CA: 11223 | Biqueira: Aço | Solado: Antiderrapante | Cano curto')">
+        <img src="https://images.unsplash.com/photo-1600180758890-1c196054b2e2?auto=format&fit=crop&w=500&q=60" alt="Botina de Segurança">
         <div class="produto-nome">Botina de Segurança</div>
-      </a>
+      </div>
 
-      <a href="https://wa.me/5511942593255?text=Olá! Tenho interesse nas luvas de proteção." target="_blank" class="produto">
-        <img src="https://images.unsplash.com/photo-1620812091960-2ebcbf5197c0?auto=format&fit=crop&w=500&q=60" alt="Luvas de proteção" />
+      <!-- Produto: Luvas -->
+      <div class="produto" onclick="abrirModal('Luvas de Proteção', 'Essenciais para proteger as mãos contra cortes, perfurações e contato com produtos químicos. Muito utilizadas em manuseio de ferramentas e materiais.', 'CA: 33445 | Tipo: Nitrílica | Cor: Azul | Uso: Químico e mecânico')">
+        <img src="https://images.unsplash.com/photo-1620812091960-2ebcbf5197c0?auto=format&fit=crop&w=500&q=60" alt="Luvas de Proteção">
         <div class="produto-nome">Luvas de Proteção</div>
-      </a>
+      </div>
 
-      <a href="https://wa.me/5511942593255?text=Olá! Tenho interesse nos óculos de proteção." target="_blank" class="produto">
-        <img src="https://images.unsplash.com/photo-1588776814546-3f2b7f2b5d12?auto=format&fit=crop&w=500&q=60" alt="Óculos de proteção" />
+      <!-- Produto: Óculos -->
+      <div class="produto" onclick="abrirModal('Óculos de Proteção', 'Protege os olhos contra poeira, faíscas e respingos. Indispensável em serviços com ferramentas elétricas, cortes ou lixamento.', 'CA: 55667 | Lentes: Incolor com proteção UV | Material: Policarbonato')">
+        <img src="https://images.unsplash.com/photo-1588776814546-3f2b7f2b5d12?auto=format&fit=crop&w=500&q=60" alt="Óculos de Proteção">
         <div class="produto-nome">Óculos de Proteção</div>
-      </a>
+      </div>
 
-      <a href="https://wa.me/5511942593255?text=Olá! Tenho interesse no protetor auricular." target="_blank" class="produto">
-        <img src="https://images.unsplash.com/photo-1635968376867-0e98165a3b89?auto=format&fit=crop&w=500&q=60" alt="Protetor auricular" />
-        <div class="produto-nome">Protetor Auricular</div>
-      </a>
-
-      <a href="https://wa.me/5511942593255?text=Olá! Tenho interesse no cinturão de segurança." target="_blank" class="produto">
-        <img src="https://images.unsplash.com/photo-1622527201031-93ea05b65a40?auto=format&fit=crop&w=500&q=60" alt="Cinturão de segurança" />
-        <div class="produto-nome">Cinturão de Segurança</div>
-      </a>
-
-      <a href="https://wa.me/5511942593255?text=Olá! Tenho interesse no colete refletivo." target="_blank" class="produto">
-        <img src="https://images.unsplash.com/photo-1626374196761-171f1a7b5e63?auto=format&fit=crop&w=500&q=60" alt="Colete refletivo" />
-        <div class="produto-nome">Colete Refletivo</div>
-      </a>
-
-    </section>
-
-    <div class="whatsapp-section">
-      <h3>Fale com a gente no WhatsApp</h3>
-      <a href="https://wa.me/5511942593255" target="_blank">Clique aqui para falar agora</a>
     </div>
   </main>
 
   <footer>
     &copy; 2025 ObraSegura. Todos os direitos reservados.
   </footer>
+
+  <!-- Modal -->
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <span class="close" onclick="fecharModal()">&times;</span>
+      <h3 id="modal-titulo">Título</h3>
+      <p id="modal-descricao"></p>
+      <p id="modal-especificacoes"></p>
+      <a id="modal-whatsapp" href="#" target="_blank" class="whatsapp-btn">Falar no WhatsApp</a>
+    </div>
+  </div>
+
+  <script>
+    function abrirModal(titulo, descricao, especificacoes) {
+      document.getElementById('modal-titulo').innerText = titulo;
+      document.getElementById('modal-descricao').innerText = descricao;
+      document.getElementById('modal-especificacoes').innerText = especificacoes;
+
+      const mensagem = encodeURIComponent("Olá! Tenho interesse no " + titulo.toLowerCase() + ".");
+      document.getElementById('modal-whatsapp').href = "https://wa.me/5511942593255?text=" + mensagem;
+
+      document.getElementById('modal').style.display = 'flex';
+    }
+
+    function fecharModal() {
+      document.getElementById('modal').style.display = 'none';
+    }
+
+    // Fecha ao clicar fora do modal
+    window.onclick = function(event) {
+      const modal = document.getElementById('modal');
+      if (event.target === modal) {
+        fecharModal();
+      }
+    }
+  </script>
 </body>
 </html>
+
